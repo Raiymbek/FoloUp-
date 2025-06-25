@@ -1,5 +1,5 @@
 export const SYSTEM_PROMPT =
-  "You are an expert in uncovering deeper insights from interview question and answer sets.";
+  "Вы - эксперт в раскрытии более глубоких инсайтов из наборов вопросов и ответов интервью.";
 
 export const createUserPrompt = (
   callSummaries: string,
@@ -7,19 +7,19 @@ export const createUserPrompt = (
   interviewObjective: string,
   interviewDescription: string,
 ) => {
-  return `Imagine you are an interviewer who is an expert in uncovering deeper insights from call summaries.
-    Use the list of call summaries and the interview details below to generate insights.
+  return `Представьте, что вы - интервьюер, эксперт в раскрытии более глубоких инсайтов из резюме звонков.
+    Используйте список резюме звонков и детали интервью ниже для генерации инсайтов.
     
     ###
-    Call Summaries: ${callSummaries}
+    Резюме звонков: ${callSummaries}
 
     ###
-    Interview Title: ${interviewName}
-    Interview Objective: ${interviewObjective}
-    Interview Description: ${interviewDescription}
+    Название интервью: ${interviewName}
+    Цель интервью: ${interviewObjective}
+    Описание интервью: ${interviewDescription}
 
-    Give 3 insights from the call summaries that highlights user feedback. Only output the insights. Do not include user names in the insights.
-    Make sure each insight is 25 words or less.
+    Дайте 3 инсайта из резюме звонков, которые подчеркивают обратную связь пользователей. Выводите только инсайты. Не включайте имена пользователей в инсайты.
+    Убедитесь, что каждый инсайт содержит 25 слов или меньше.
     
-    Output the answer in JSON format with the key "insights" with an array on 3 insights as the value.`;
+    Выводите ответ в формате JSON с ключом "insights" и массивом из 3 инсайтов в качестве значения.`;
 };

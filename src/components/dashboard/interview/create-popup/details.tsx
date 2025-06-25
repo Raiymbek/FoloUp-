@@ -143,20 +143,20 @@ function DetailsPopup({
   return (
     <>
       <div className="text-center w-[38rem]">
-        <h1 className="text-xl font-semibold">Create an Interview</h1>
+        <h1 className="text-xl font-semibold">Создать интервью</h1>
         <div className="flex flex-col justify-center items-start mt-4 ml-10 mr-8">
           <div className="flex flex-row justify-center items-center">
-            <h3 className="text-sm font-medium">Interview Name:</h3>
+            <h3 className="text-sm font-medium">Название интервью:</h3>
             <input
               type="text"
               className="border-b-2 focus:outline-none border-gray-500 px-2 w-96 py-0.5 ml-3"
-              placeholder="e.g. Name of the Interview"
+              placeholder="например: Название интервью"
               value={name}
               onChange={(e) => setName(e.target.value)}
               onBlur={(e) => setName(e.target.value.trim())}
             />
           </div>
-          <h3 className="text-sm mt-3 font-medium">Select an Interviewer:</h3>
+          <h3 className="text-sm mt-3 font-medium">Выберите интервьюера:</h3>
           <div className="relative flex items-center mt-1">
             <div
               id="slider-3"
@@ -216,16 +216,16 @@ function DetailsPopup({
               <></>
             )}
           </div>
-          <h3 className="text-sm font-medium">Objective:</h3>
+          <h3 className="text-sm font-medium">Цель:</h3>
           <Textarea
             value={objective}
             className="h-24 mt-2 border-2 border-gray-500 w-[33.2rem]"
-            placeholder="e.g. Find best candidates based on their technical skills and previous projects."
+            placeholder="например: Найти лучших кандидатов на основе их технических навыков и предыдущих проектов."
             onChange={(e) => setObjective(e.target.value)}
             onBlur={(e) => setObjective(e.target.value.trim())}
           />
           <h3 className="text-sm font-medium mt-2">
-            Upload any documents related to the interview.
+            Загрузите любые документы, связанные с интервью.
           </h3>
           <FileUpload
             isUploaded={isUploaded}
@@ -237,7 +237,7 @@ function DetailsPopup({
           <label className="flex-col mt-7 w-full">
             <div className="flex items-center cursor-pointer">
               <span className="text-sm font-medium">
-                Do you prefer the interviewees&apos; responses to be anonymous?
+                Предпочитаете ли вы, чтобы ответы интервьюируемых были анонимными?
               </span>
               <Switch
                 checked={isAnonymous}
@@ -251,13 +251,12 @@ function DetailsPopup({
               style={{ fontSize: "0.7rem", lineHeight: "0.66rem" }}
               className="font-light text-xs italic w-full text-left block"
             >
-              Note: If not anonymous, the interviewee&apos;s email and name will
-              be collected.
+              Примечание: Если не анонимно, будут собираться email и имя интервьюируемого.
             </span>
           </label>
           <div className="flex flex-row gap-3 justify-between w-full mt-3">
             <div className="flex flex-row justify-center items-center ">
-              <h3 className="text-sm font-medium ">Number of Questions:</h3>
+              <h3 className="text-sm font-medium ">Количество вопросов:</h3>
               <input
                 type="number"
                 step="1"
@@ -280,7 +279,7 @@ function DetailsPopup({
               />
             </div>
             <div className="flex flex-row justify-center items-center">
-              <h3 className="text-sm font-medium ">Duration (mins):</h3>
+              <h3 className="text-sm font-medium ">Продолжительность (мин):</h3>
               <input
                 type="number"
                 step="1"
@@ -320,7 +319,7 @@ function DetailsPopup({
                 onGenrateQuestions();
               }}
             >
-              Generate Questions
+              Сгенерировать вопросы
             </Button>
             <Button
               disabled={
@@ -338,7 +337,7 @@ function DetailsPopup({
                 onManual();
               }}
             >
-              I&apos;ll do it myself
+              Я сделаю это сам
             </Button>
           </div>
         </div>

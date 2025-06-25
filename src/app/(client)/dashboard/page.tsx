@@ -39,15 +39,15 @@ function Interviews() {
       try {
         if (organization?.id) {
           const data = await ClientService.getOrganizationById(organization.id);
-          if (data?.plan) {
-            setCurrentPlan(data.plan);
-            if (data.plan === "free_trial_over") {
-              setIsModalOpen(true);
-            }
-          }
-          if (data?.allowed_responses_count) {
-            setAllowedResponsesCount(data.allowed_responses_count);
-          }
+          // if (data?.plan) {
+          //   setCurrentPlan(data.plan);
+          //   if (data.plan === "free_trial_over") {
+          //     setIsModalOpen(true);
+          //   }
+          // }
+          // if (data?.allowed_responses_count) {
+          //   setAllowedResponsesCount(data.allowed_responses_count);
+          // }
         }
       } catch (error) {
         console.error("Error fetching organization data:", error);
@@ -59,30 +59,30 @@ function Interviews() {
 
   useEffect(() => {
     const fetchResponsesCount = async () => {
-      if (!organization || currentPlan !== "free") {
-        return;
-      }
+      // if (!organization || currentPlan !== "free") {
+      //   return;
+      // }
 
-      setLoading(true);
-      try {
-        const totalResponses =
-          await ResponseService.getResponseCountByOrganizationId(
-            organization.id,
-          );
-        const hasExceededLimit = totalResponses >= allowedResponsesCount;
-        if (hasExceededLimit) {
-          setCurrentPlan("free_trial_over");
-          await InterviewService.deactivateInterviewsByOrgId(organization.id);
-          await ClientService.updateOrganization(
-            { plan: "free_trial_over" },
-            organization.id,
-          );
-        }
-      } catch (error) {
-        console.error("Error fetching responses:", error);
-      } finally {
-        setLoading(false);
-      }
+      // setLoading(true);
+      // try {
+      //   const totalResponses =
+      //     await ResponseService.getResponseCountByOrganizationId(
+      //       organization.id,
+      //     );
+      //   const hasExceededLimit = totalResponses >= allowedResponsesCount;
+      //   if (hasExceededLimit) {
+      //     setCurrentPlan("free_trial_over");
+      //     await InterviewService.deactivateInterviewsByOrgId(organization.id);
+      //     await ClientService.updateOrganization(
+      //       { plan: "free_trial_over" },
+      //       organization.id,
+      //     );
+      //   }
+      // } catch (error) {
+      //   console.error("Error fetching responses:", error);
+      // } finally {
+      //   setLoading(false);
+      // }
     };
 
     fetchResponsesCount();
@@ -92,42 +92,41 @@ function Interviews() {
     <main className="p-8 pt-0 ml-12 mr-auto rounded-md">
       <div className="flex flex-col items-left">
         <h2 className="mr-2 text-2xl font-semibold tracking-tight mt-8">
-          My Interviews
+          Мои интервью
         </h2>
         <h3 className=" text-sm tracking-tight text-gray-600 font-medium ">
-          Start getting responses now!
+          Начните получать ответы прямо сейчас!
         </h3>
         <div className="relative flex items-center mt-1 flex-wrap">
-          {currentPlan == "free_trial_over" ? (
+          {/* {currentPlan == "free_trial_over" ? (
             <Card className=" flex bg-gray-200 items-center border-dashed border-gray-700 border-2 hover:scale-105 ease-in-out duration-300 h-60 w-56 ml-1 mr-3 mt-4 rounded-xl shrink-0 overflow-hidden shadow-md">
               <CardContent className="flex items-center flex-col mx-auto">
                 <div className="flex flex-col justify-center items-center w-full overflow-hidden">
                   <Plus size={90} strokeWidth={0.5} className="text-gray-700" />
                 </div>
                 <CardTitle className="p-0 text-md text-center">
-                  You cannot create any more interviews unless you upgrade
+                  Вы не можете создавать новые интервью, пока не обновите план
                 </CardTitle>
               </CardContent>
             </Card>
-          ) : (
+          ) : ( */}
             <CreateInterviewCard />
-          )}
+          {/* )} */}
           {interviewsLoading || loading ? (
             <InterviewsLoader />
           ) : (
             <>
-              {isModalOpen && (
+              {/* {isModalOpen && (
                 <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)}>
                   <div className="flex flex-col space-y-4">
                     <div className="flex justify-center text-indigo-600">
                       <Gem />
                     </div>
                     <h3 className="text-xl font-semibold text-center">
-                      Upgrade to Pro
+                      Обновите до Pro
                     </h3>
                     <p className="text-l text-center">
-                      You have reached your limit for the free trial. Please
-                      upgrade to pro to continue using our features.
+                      Вы достигли лимита бесплатного пробного периода. Пожалуйста, обновите до Pro, чтобы продолжить использовать наши функции.
                     </p>
                     <div className="grid grid-cols-2 gap-2">
                       <div className="flex justify-center items-center">
@@ -141,31 +140,31 @@ function Interviews() {
 
                       <div className="grid grid-rows-2 gap-2">
                         <div className="p-4 border rounded-lg">
-                          <h4 className="text-lg font-medium">Free Plan</h4>
+                          <h4 className="text-lg font-medium">Бесплатный план</h4>
                           <ul className="list-disc pl-5 mt-2">
-                            <li>10 Responses</li>
-                            <li>Basic Support</li>
-                            <li>Limited Features</li>
+                            <li>10 ответов</li>
+                            <li>Базовая поддержка</li>
+                            <li>Ограниченные функции</li>
                           </ul>
                         </div>
                         <div className="p-4 border rounded-lg">
-                          <h4 className="text-lg font-medium">Pro Plan</h4>
+                          <h4 className="text-lg font-medium">Pro план</h4>
                           <ul className="list-disc pl-5 mt-2">
-                            <li>Flexible Pay-Per-Response</li>
-                            <li>Priority Support</li>
-                            <li>All Features</li>
+                            <li>Гибкая оплата за ответ</li>
+                            <li>Приоритетная поддержка</li>
+                            <li>Все функции</li>
                           </ul>
                         </div>
                       </div>
                     </div>
                     <p className="text-l text-center">
-                      Contact{" "}
+                      Свяжитесь с{" "}
                       <span className="font-semibold">founders@folo-up.co</span>{" "}
-                      to upgrade your plan.
+                      для обновления вашего плана.
                     </p>
                   </div>
                 </Modal>
-              )}
+              )} */}
               {interviews.map((item) => (
                 <InterviewCard
                   id={item.id}

@@ -31,7 +31,7 @@ function FileUpload({
       const file = acceptedFiles[0];
       setFileName(file.name);
       if (file.size > 10 * 1024 * 1024) {
-        toast.error("Please upload a file smaller than 10MB.", {
+        toast.error("Пожалуйста, загрузите файл меньше 10МБ.", {
           position: "bottom-right",
           duration: 3000,
         });
@@ -53,8 +53,8 @@ function FileUpload({
         setIsUploaded(true);
       } catch (error) {
         console.log(error);
-        toast.error("Error reading PDF", {
-          description: "Please try again.",
+        toast.error("Ошибка чтения PDF", {
+          description: "Пожалуйста, попробуйте снова.",
           duration: 3000,
         });
       } finally {
@@ -76,22 +76,22 @@ function FileUpload({
           <>
             <>
               <Inbox className="w-8 h-8 text-blue-500" />
-              <p className="mt-2 text-sm text-slate-400">Drop PDF Here</p>
+              <p className="mt-2 text-sm text-slate-400">Перетащите PDF сюда</p>
             </>
           </>
         </div>
       ) : (
         <div className="text-left">
           <p className="mt-2 text-sm text-slate-600">
-            File uploaded successfully. {fileName}
+            Файл успешно загружен. {fileName}
           </p>
           <p className="mt-2 text-xs text-slate-600">
-            Do you want to{" "}
+            Хотите{" "}
             <span
               className="underline text-slate-950 cursor-pointer font-semibold"
               onClick={() => setIsUploaded(false)}
             >
-              Reupload?
+              загрузить заново?
             </span>
           </p>
         </div>

@@ -109,9 +109,9 @@ function InterviewHome({ params, searchParams }: Props) {
       try {
         if (organization?.id) {
           const data = await ClientService.getOrganizationById(organization.id);
-          if (data?.plan) {
-            setCurrentPlan(data.plan);
-          }
+          // if (data?.plan) {
+          //   setCurrentPlan(data.plan);
+          // }
         }
       } catch (error) {
         console.error("Error fetching organization data:", error);
@@ -175,9 +175,9 @@ function InterviewHome({ params, searchParams }: Props) {
         params.interviewId,
       );
 
-      toast.success("Interview status updated", {
-        description: `The interview is now ${
-          updatedIsActive ? "active" : "inactive"
+      toast.success("Статус интервью обновлен", {
+        description: `Интервью теперь ${
+          updatedIsActive ? "активно" : "не активно"
         }.`,
         position: "bottom-right",
         duration: 3000,
@@ -198,14 +198,14 @@ function InterviewHome({ params, searchParams }: Props) {
         params.interviewId,
       );
 
-      toast.success("Theme color updated", {
+      toast.success("Цвет темы обновлен", {
         position: "bottom-right",
         duration: 3000,
       });
     } catch (error) {
       console.error(error);
       toast.error("Error", {
-        description: "Failed to update the theme color.",
+        description: "Не удалось обновить цвет темы.",
         duration: 3000,
       });
     }
@@ -296,7 +296,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   side="bottom"
                   sideOffset={4}
                 >
-                  <span className="text-black flex flex-row gap-4">Share</span>
+                  <span className="text-black flex flex-row gap-4">Поделиться</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
@@ -319,7 +319,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   sideOffset={4}
                 >
                   <span className="text-black flex flex-row gap-4">
-                    Preview
+                    Предпросмотр
                   </span>
                 </TooltipContent>
               </Tooltip>
@@ -343,7 +343,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   sideOffset={4}
                 >
                   <span className="text-black flex flex-row gap-4">
-                    Theme Color
+                    Цвет темы
                   </span>
                 </TooltipContent>
               </Tooltip>
@@ -367,15 +367,15 @@ function InterviewHome({ params, searchParams }: Props) {
                   side="bottom"
                   sideOffset={4}
                 >
-                  <span className="text-black flex flex-row gap-4">Edit</span>
+                  <span className="text-black flex flex-row gap-4">Редактировать</span>
                 </TooltipContent>
               </Tooltip>
             </TooltipProvider>
 
             <label className="inline-flex cursor-pointer">
-              {currentPlan == "free_trial_over" ? (
+              {/* {currentPlan == "free_trial_over" ? (
                 <>
-                  <span className="ms-3 my-auto text-sm">Inactive</span>
+                  <span className="ms-3 my-auto text-sm">Неактивно</span>
                   <TooltipProvider>
                     <Tooltip>
                       <TooltipContent
@@ -383,14 +383,14 @@ function InterviewHome({ params, searchParams }: Props) {
                         side="bottom"
                         sideOffset={4}
                       >
-                        Upgrade your plan to reactivate
+                        Обновите план для повторной активации
                       </TooltipContent>
                     </Tooltip>
                   </TooltipProvider>
                 </>
-              ) : (
+              ) : ( */}
                 <>
-                  <span className="ms-3 my-auto text-sm">Active</span>
+                  <span className="ms-3 my-auto text-sm">Активно</span>
                   <Switch
                     checked={isActive}
                     className={`ms-3 my-auto ${
@@ -399,7 +399,7 @@ function InterviewHome({ params, searchParams }: Props) {
                     onCheckedChange={handleToggle}
                   />
                 </>
-              )}
+              {/* )} */}
             </label>
           </div>
           <div className="flex flex-row w-full p-2 h-[85%] gap-1 ">
@@ -412,37 +412,37 @@ function InterviewHome({ params, searchParams }: Props) {
                 >
                   <SelectTrigger className="w-[95%] bg-slate-100 rounded-lg">
                     <Filter size={18} className=" text-slate-400" />
-                    <SelectValue placeholder="Filter By" />
+                    <SelectValue placeholder="Фильтровать по" />
                   </SelectTrigger>
                   <SelectContent>
                     <SelectItem value={CandidateStatus.NO_STATUS}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-gray-400 rounded-full mr-2" />
-                        No Status
+                        Без статуса
                       </div>
                     </SelectItem>
                     <SelectItem value={CandidateStatus.NOT_SELECTED}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-red-500 rounded-full mr-2" />
-                        Not Selected
+                        Не выбран
                       </div>
                     </SelectItem>
                     <SelectItem value={CandidateStatus.POTENTIAL}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-yellow-500 rounded-full mr-2" />
-                        Potential
+                        Потенциальный
                       </div>
                     </SelectItem>
                     <SelectItem value={CandidateStatus.SELECTED}>
                       <div className="flex items-center">
                         <div className="w-3 h-3 bg-green-500 rounded-full mr-2" />
-                        Selected
+                        Выбран
                       </div>
                     </SelectItem>
                     <SelectItem value="ALL">
                       <div className="flex items-center">
                         <div className="w-3 h-3 border-2 border-gray-300 rounded-full mr-2" />
-                        All
+                        Все
                       </div>
                     </SelectItem>
                   </SelectContent>
@@ -480,8 +480,8 @@ function InterviewHome({ params, searchParams }: Props) {
                           <div className="flex flex-col my-auto">
                             <p className="font-medium mb-[2px]">
                               {response?.name
-                                ? `${response?.name}'s Response`
-                                : "Anonymous"}
+                                ? `Ответ ${response?.name}`
+                                : "Анонимный"}
                             </p>
                             <p className="">
                               {formatTimestampToDateHHMM(
@@ -520,7 +520,7 @@ function InterviewHome({ params, searchParams }: Props) {
                                         sideOffset={4}
                                       >
                                         <span className="text-white font-normal flex flex-row gap-4">
-                                          Overall Score
+                                          Общий балл
                                         </span>
                                       </TooltipContent>
                                     </Tooltip>
@@ -534,7 +534,7 @@ function InterviewHome({ params, searchParams }: Props) {
                   ))
                 ) : (
                   <p className="text-center text-gray-500">
-                    No responses to display
+                    Нет ответов для отображения
                   </p>
                 )}
               </ScrollArea>
@@ -564,7 +564,7 @@ function InterviewHome({ params, searchParams }: Props) {
       >
         <div className="w-[250px] p-3">
           <h3 className="text-lg font-semibold mb-4 text-center">
-            Choose a Theme Color
+            Выберите цвет темы
           </h3>
           <ChromePicker
             disableAlpha={true}

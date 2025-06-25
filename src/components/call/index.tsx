@@ -94,15 +94,15 @@ function Call({ interview }: InterviewProps) {
       });
 
       if (result) {
-        toast.success("Thank you for your feedback!");
+        toast.success("Спасибо за ваш отзыв!");
         setIsFeedbackSubmitted(true);
         setIsDialogOpen(false);
       } else {
-        toast.error("Failed to submit feedback. Please try again.");
+        toast.error("Не удалось отправить отзыв. Пожалуйста, попробуйте снова.");
       }
     } catch (error) {
       console.error("Error submitting feedback:", error);
-      toast.error("An error occurred. Please try again later.");
+      toast.error("Произошла ошибка. Пожалуйста, попробуйте снова позже.");
     }
   };
 
@@ -308,14 +308,14 @@ function Call({ interview }: InterviewProps) {
                     style={{ color: interview.theme_color }}
                   />
                   <div className="text-sm font-normal">
-                    Expected duration:{" "}
+                    Ожидаемая продолжительность:{" "}
                     <span
                       className="font-bold"
                       style={{ color: interview.theme_color }}
                     >
-                      {interviewTimeDuration} mins{" "}
+                      {interviewTimeDuration} мин{" "}
                     </span>
-                    or less
+                    или меньше
                   </div>
                 </div>
               )}
@@ -337,10 +337,8 @@ function Call({ interview }: InterviewProps) {
                   <div className="p-2 font-normal text-sm mb-4 whitespace-pre-line">
                     {interview?.description}
                     <p className="font-bold text-sm">
-                      {"\n"}Ensure your volume is up and grant microphone access
-                      when prompted. Additionally, please make sure you are in a
-                      quiet environment.
-                      {"\n\n"}Note: Tab switching will be recorded.
+                      {"\n"}Убедитесь, что громкость включена и разрешите доступ к микрофону при запросе. Кроме того, убедитесь, что вы находитесь в тихом помещении.
+                      {"\n\n"}Примечание: Переключения вкладок будут записаны.
                     </p>
                   </div>
                   {!interview?.is_anonymous && (
@@ -349,7 +347,7 @@ function Call({ interview }: InterviewProps) {
                         <input
                           value={email}
                           className="h-fit mx-auto py-2 border-2 rounded-md w-[75%] self-center px-2 border-gray-400 text-sm font-normal"
-                          placeholder="Enter your email address"
+                          placeholder="Введите ваш email адрес"
                           onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
@@ -357,7 +355,7 @@ function Call({ interview }: InterviewProps) {
                         <input
                           value={name}
                           className="h-fit mb-4 mx-auto py-2 border-2 rounded-md w-[75%] self-center px-2 border-gray-400 text-sm font-normal"
-                          placeholder="Enter your first name"
+                          placeholder="Введите ваше имя"
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
@@ -379,7 +377,7 @@ function Call({ interview }: InterviewProps) {
                     }
                     onClick={startConversation}
                   >
-                    {!Loading ? "Start Interview" : <MiniLoader />}
+                    {!Loading ? "Начать интервью" : <MiniLoader />}
                   </Button>
                   <AlertDialog>
                     <AlertDialogTrigger>
@@ -388,22 +386,22 @@ function Call({ interview }: InterviewProps) {
                         style={{ borderColor: interview.theme_color }}
                         disabled={Loading}
                       >
-                        Exit
+                        Выйти
                       </Button>
                     </AlertDialogTrigger>
                     <AlertDialogContent>
                       <AlertDialogHeader>
-                        <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                        <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
                       </AlertDialogHeader>
                       <AlertDialogFooter>
-                        <AlertDialogCancel>Cancel</AlertDialogCancel>
+                        <AlertDialogCancel>Отмена</AlertDialogCancel>
                         <AlertDialogAction
                           className="bg-indigo-600 hover:bg-indigo-800"
                           onClick={async () => {
                             await onEndCallClick();
                           }}
                         >
-                          Continue
+                          Продолжить
                         </AlertDialogAction>
                       </AlertDialogFooter>
                     </AlertDialogContent>
@@ -432,7 +430,7 @@ function Call({ interview }: InterviewProps) {
                             : ""
                         }`}
                       />
-                      <div className="font-semibold">Interviewer</div>
+                      <div className="font-semibold">Интервьюер</div>
                     </div>
                   </div>
                 </div>
@@ -456,7 +454,7 @@ function Call({ interview }: InterviewProps) {
                           : ""
                       }`}
                     />
-                    <div className="font-semibold">You</div>
+                    <div className="font-semibold">Вы</div>
                   </div>
                 </div>
               </div>
@@ -469,27 +467,26 @@ function Call({ interview }: InterviewProps) {
                       className=" bg-white text-black border  border-indigo-600 h-10 mx-auto flex flex-row justify-center mb-8"
                       disabled={Loading}
                     >
-                      End Interview{" "}
+                      Завершить интервью{" "}
                       <XCircleIcon className="h-[1.5rem] ml-2 w-[1.5rem] rotate-0 scale-100  dark:-rotate-90 dark:scale-0 text-red" />
                     </Button>
                   </AlertDialogTrigger>
                   <AlertDialogContent>
                     <AlertDialogHeader>
-                      <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                      <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
                       <AlertDialogDescription>
-                        This action cannot be undone. This action will end the
-                        call.
+                        Это действие нельзя отменить. Это действие завершит звонок.
                       </AlertDialogDescription>
                     </AlertDialogHeader>
                     <AlertDialogFooter>
-                      <AlertDialogCancel>Cancel</AlertDialogCancel>
+                      <AlertDialogCancel>Отмена</AlertDialogCancel>
                       <AlertDialogAction
                         className="bg-indigo-600 hover:bg-indigo-800"
                         onClick={async () => {
                           await onEndCallClick();
                         }}
                       >
-                        Continue
+                        Продолжить
                       </AlertDialogAction>
                     </AlertDialogFooter>
                   </AlertDialogContent>
@@ -504,12 +501,12 @@ function Call({ interview }: InterviewProps) {
                     <CheckCircleIcon className="h-[2rem] w-[2rem] mx-auto my-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-indigo-500 " />
                     <p className="text-lg font-semibold text-center">
                       {isStarted
-                        ? `Thank you for taking the time to participate in this interview`
-                        : "Thank you very much for considering."}
+                        ? `Спасибо, что нашли время для участия в этом интервью`
+                        : "Большое спасибо за ваше внимание."}
                     </p>
                     <p className="text-center">
                       {"\n"}
-                      You can close this tab now.
+                      Теперь вы можете закрыть эту вкладку.
                     </p>
                   </div>
 
@@ -523,7 +520,7 @@ function Call({ interview }: InterviewProps) {
                           className="bg-indigo-600 text-white h-10 mt-4 mb-4"
                           onClick={() => setIsDialogOpen(true)}
                         >
-                          Provide Feedback
+                          Предоставить отзыв
                         </Button>
                       </AlertDialogTrigger>
                       <AlertDialogContent>
@@ -543,12 +540,11 @@ function Call({ interview }: InterviewProps) {
                   <div className="p-2 font-normal text-base mb-4 whitespace-pre-line">
                     <CheckCircleIcon className="h-[2rem] w-[2rem] mx-auto my-4 rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-indigo-500 " />
                     <p className="text-lg font-semibold text-center">
-                      You have already responded in this interview or you are
-                      not eligible to respond. Thank you!
+                      Вы уже ответили в этом интервью или не имеете права отвечать. Спасибо!
                     </p>
                     <p className="text-center">
                       {"\n"}
-                      You can close this tab now.
+                      Теперь вы можете закрыть эту вкладку.
                     </p>
                   </div>
                 </div>
@@ -562,9 +558,9 @@ function Call({ interview }: InterviewProps) {
           target="_blank"
         >
           <div className="text-center text-md font-semibold mr-2  ">
-            Powered by{" "}
+            Работает на{" "}
             <span className="font-bold">
-              Folo<span className="text-indigo-600">Up</span>
+              Rise Folo<span className="text-indigo-600">Up</span>
             </span>
           </div>
           <ArrowUpRightSquareIcon className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-indigo-500 " />

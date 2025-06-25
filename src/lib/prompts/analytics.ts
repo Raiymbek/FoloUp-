@@ -1,56 +1,56 @@
 export const SYSTEM_PROMPT =
-  "You are an expert in analyzing interview transcripts. You must only use the main questions provided and not generate or infer additional questions.";
+  "Вы - эксперт по анализу транскриптов интервью. Вы должны использовать только основные вопросы, предоставленные вам, и не генерировать или предполагать дополнительные вопросы.";
 
 export const getInterviewAnalyticsPrompt = (
   interviewTranscript: string,
   mainInterviewQuestions: string,
-) => `Analyse the following interview transcript and provide structured feedback:
+) => `Проанализируйте следующий транскрипт интервью и предоставьте структурированную обратную связь:
 
 ###
-Transcript: ${interviewTranscript}
+Транскрипт: ${interviewTranscript}
 
-Main Interview Questions:
+Основные вопросы интервью:
 ${mainInterviewQuestions}
 
 
-Based on this transcript and the provided main interview questions, generate the following analytics in JSON format:
-1. Overall Score (0-100) and Overall Feedback (60 words) - take into account the following factors:
-   - Communication Skills: Evaluate the use of language, grammar, and vocabulary. Assess if the interviewee communicated effectively and clearly.
-   - Time Taken to Answer: Consider if the interviewee answered promptly or took too long. Note if they were concise or tended to ramble.
-   - Confidence: Assess the interviewee's confidence level. Were they assertive and self-assured, or did they seem hesitant and unsure?
-   - Clarity: Evaluate the clarity of their answers. Were their responses well-structured and easy to understand?
-   - Attitude: Consider the interviewee's attitude towards the interview and questions. Were they positive, respectful, and engaged?
-   - Relevance of Answers: Determine if the interviewee's responses are relevant to the questions asked. Assess if they stayed on topic or veered off track.
-   - Depth of Knowledge: Evaluate the interviewee's depth of understanding and knowledge in the subject matter. Look for detailed and insightful answers.
-   - Problem-Solving Ability: Consider how the interviewee approaches problem-solving questions. Assess their logical reasoning and analytical skills.
-   - Examples and Evidence: Note if the interviewee provides concrete examples or evidence to support their answers. This can indicate experience and credibility.
-   - Listening Skills: Look for signs that the interviewee is actively listening and responding appropriately to follow-up questions.
-   - Consistency: Evaluate if the interviewee's answers are consistent throughout the interview or if they contradict themselves.
-   - Adaptability: Assess how well the interviewee adapts to different types of questions, including unexpected or challenging ones.
+На основе этого транскрипта и предоставленных основных вопросов интервью, сгенерируйте следующие аналитические данные в формате JSON:
+1. Общий балл (0-100) и общая обратная связь (60 слов) - учитывайте следующие факторы:
+   - Коммуникативные навыки: Оцените использование языка, грамматики и словарного запаса. Определите, эффективно ли и четко общался интервьюируемый.
+   - Время, затраченное на ответ: Учитывайте, отвечал ли интервьюируемый быстро или слишком долго. Отметьте, был ли он лаконичным или склонен к многословию.
+   - Уверенность: Оцените уровень уверенности интервьюируемого. Был ли он напористым и самоуверенным, или казался неуверенным и сомневающимся?
+   - Ясность: Оцените ясность их ответов. Были ли их ответы хорошо структурированными и легкими для понимания?
+   - Отношение: Учитывайте отношение интервьюируемого к интервью и вопросам. Был ли он позитивным, уважительным и вовлеченным?
+   - Релевантность ответов: Определите, релевантны ли ответы интервьюируемого заданным вопросам. Оцените, оставался ли он в теме или отклонялся от нее.
+   - Глубина знаний: Оцените глубину понимания и знаний интервьюируемого в предметной области. Ищите детальные и проницательные ответы.
+   - Способность к решению проблем: Учитывайте, как интервьюируемый подходит к вопросам решения проблем. Оцените их логическое мышление и аналитические навыки.
+   - Примеры и доказательства: Отметьте, предоставляет ли интервьюируемый конкретные примеры или доказательства в поддержку своих ответов. Это может указывать на опыт и достоверность.
+   - Навыки слушания: Ищите признаки того, что интервьюируемый активно слушает и соответствующим образом отвечает на уточняющие вопросы.
+   - Последовательность: Оцените, последовательны ли ответы интервьюируемого на протяжении всего интервью или он противоречит сам себе.
+   - Адаптивность: Оцените, насколько хорошо интервьюируемый адаптируется к различным типам вопросов, включая неожиданные или сложные.
 
-2. Communication Skills: Score (0-10) and Feedback (60 words). Rating system and guidleines for communication skills is as follwing.
-    - 10: Fully operational command, use of English is appropriate, accurate, fluent, shows complete understanding.
-    - 09: Fully operational command with occasional inaccuracies and inappropriate usage. May misunderstand unfamiliar situations but handles complex arguments well.
-    - 08: Operational command with occasional inaccuracies, inappropriate usage, and misunderstandings. Handles complex language and detailed reasoning well.
-    - 07: Effective command despite some inaccuracies, inappropriate usage, and misunderstandings. Can use and understand reasonably complex language, especially in familiar situations.
-    - 06: Partial command, copes with overall meaning, frequent mistakes. Handles basic communication in their field.
-    - 05: Basic competence limited to familiar situations with frequent problems in understanding and expression.
-    - 04: Understands only general meaning in very familiar situations, with frequent communication breakdowns.
-    - 03: Has great difficulty understanding spoken English.
-    - 02: Has no ability to use the language except a few isolated words.
-    - 01: Did not answer the questions.
-3. Summary for each main interview question: ${mainInterviewQuestions}
-   - Use ONLY the main questions provided, it should output all the questions with the numbers even if it's not found in the transcript.
-   - Follow the below rules when outputing the question and summary
-      - If a main interview question isn't found in the transcript, then output the main question and give the summary as "Not Asked"
-      - If a main interview question is found in the transcript but an answer couldn't be found, then output the main question and give the summary as "Not Answered"
-      - If a main interview question is found in the transcript and an answer can also be found, then,
-          - For each main question (q), provide a summary that includes:
-            a) The candidate's response to the main question
-            b) Any follow-up questions that were asked related to this main question and their answers
-          - The summary should be a cohesive paragraph encompassing all related information for each main question
-4. Create a 10 to 15 words summary regarding the soft skills considering factors such as confidence, leadership, adaptability, critical thinking and decision making.
-Ensure the output is in valid JSON format with the following structure:
+2. Коммуникативные навыки: Балл (0-10) и обратная связь (60 слов). Система оценки и руководящие принципы для коммуникативных навыков следующие:
+    - 10: Полное оперативное владение, использование русского языка уместно, точно, бегло, показывает полное понимание.
+    - 09: Полное оперативное владение с редкими неточностями и неуместным использованием. Может неправильно понимать незнакомые ситуации, но хорошо справляется со сложными аргументами.
+    - 08: Оперативное владение с редкими неточностями, неуместным использованием и недопониманием. Хорошо справляется со сложным языком и детальными рассуждениями.
+    - 07: Эффективное владение, несмотря на некоторые неточности, неуместное использование и недопонимание. Может использовать и понимать достаточно сложный язык, особенно в знакомых ситуациях.
+    - 06: Частичное владение, справляется с общим смыслом, частые ошибки. Справляется с базовой коммуникацией в своей области.
+    - 05: Базовая компетентность, ограниченная знакомыми ситуациями, с частыми проблемами в понимании и выражении.
+    - 04: Понимает только общий смысл в очень знакомых ситуациях, с частыми сбоями в коммуникации.
+    - 03: Имеет большие трудности в понимании разговорного русского языка.
+    - 02: Не имеет способности использовать язык, кроме нескольких изолированных слов.
+    - 01: Не ответил на вопросы.
+3. Резюме для каждого основного вопроса интервью: 
+   - Используйте ТОЛЬКО основные вопросы, предоставленные вам, должно быть выведено все вопросы с номерами, даже если они не найдены в транскрипте.
+   - Следуйте приведенным ниже правилам при выводе вопроса и резюме
+      - Если основной вопрос интервью не найден в транскрипте, то выведите основной вопрос и дайте резюме как "Не задан"
+      - Если основной вопрос интервью найден в транскрипте, но ответ не найден, то выведите основной вопрос и дайте резюме как "Не отвечен"
+      - Если основной вопрос интервью найден в транскрипте и ответ также найден, то,
+          - Для каждого основного вопроса (q) предоставьте резюме, которое включает:
+            a) Ответ кандидата на основной вопрос
+            b) Любые уточняющие вопросы, которые были заданы в связи с этим основным вопросом, и их ответы
+          - Резюме должно быть связным абзацем, охватывающим всю связанную информацию для каждого основного вопроса
+4. Создайте резюме из 10-15 слов относительно мягких навыков, учитывая такие факторы, как уверенность, лидерство, адаптивность, критическое мышление и принятие решений.
+Убедитесь, что вывод в правильном формате JSON со следующей структурой:
 {
   "overallScore": number,
   "overallFeedback": string,
@@ -59,4 +59,4 @@ Ensure the output is in valid JSON format with the following structure:
   "softSkillSummary: string
 }
 
-IMPORTANT: Only use the main questions provided. Do not generate or infer additional questions such as follow-up questions.`;
+ВАЖНО: Используйте только основные вопросы, предоставленные вам. Не генерируйте и не предполагайте дополнительные вопросы, такие как уточняющие вопросы.`;

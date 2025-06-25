@@ -171,9 +171,9 @@ function EditInterview({ interview }: EditInterviewProps) {
         </div>
         <div className="flex flex-row justify-between">
           <p className="mt-3 mb-1 ml-2 font-medium">
-            Interview Description{" "}
+            Описание интервью{" "}
             <span className="text-xs ml-2 font-normal">
-              (Your respondents will see this.)
+              (Ваши кандидаты увидят это.)
             </span>
           </p>
           <div className="flex flex-row gap-3">
@@ -185,7 +185,7 @@ function EditInterview({ interview }: EditInterviewProps) {
                 onSave();
               }}
             >
-              Save <SaveIcon size={16} className="ml-2" />
+              Сохранить <SaveIcon size={16} className="ml-2" />
             </Button>
             <AlertDialog>
               <AlertDialogTrigger>
@@ -198,21 +198,20 @@ function EditInterview({ interview }: EditInterviewProps) {
               </AlertDialogTrigger>
               <AlertDialogContent>
                 <AlertDialogHeader>
-                  <AlertDialogTitle>Are you sure?</AlertDialogTitle>
+                  <AlertDialogTitle>Вы уверены?</AlertDialogTitle>
                   <AlertDialogDescription>
-                    This action cannot be undone. This will permanently delete
-                    this interview.
+                    Это действие нельзя отменить. Это навсегда удалит это интервью.
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                  <AlertDialogCancel>Cancel</AlertDialogCancel>
+                  <AlertDialogCancel>Отмена</AlertDialogCancel>
                   <AlertDialogAction
                     className="bg-indigo-600 hover:bg-indigo-800"
                     onClick={async () => {
                       await onDeleteInterviewClick();
                     }}
                   >
-                    Continue
+                    Продолжить
                   </AlertDialogAction>
                 </AlertDialogFooter>
               </AlertDialogContent>
@@ -222,7 +221,7 @@ function EditInterview({ interview }: EditInterviewProps) {
         <textarea
           value={description}
           className="h-fit mt-3 ml-2 py-2 border-2 rounded-md w-[75%] px-2 border-gray-400"
-          placeholder="Enter your interview description here."
+          placeholder="Введите описание вашего интервью здесь."
           rows={3}
           onChange={(e) => {
             setDescription(e.target.value);
@@ -231,18 +230,18 @@ function EditInterview({ interview }: EditInterviewProps) {
             setDescription(e.target.value.trim());
           }}
         />
-        <p className="mt-3 mb-1 ml-2 font-medium">Objective</p>
+        <p className="mt-3 mb-1 ml-2 font-medium">Цель</p>
         <textarea
           value={objective}
           className="h-fit mt-3 ml-2 py-2 border-2 rounded-md w-[75%] px-2 border-gray-400"
-          placeholder="Enter your interview objective here."
+          placeholder="Введите цель вашего интервью здесь."
           rows={3}
           onChange={(e) => setObjective(e.target.value)}
           onBlur={(e) => setObjective(e.target.value.trim())}
         />
         <div className="flex flex-row gap-3">
           <div>
-            <p className="mt-3 mb-1 ml-2 font-medium">Interviewer</p>
+            <p className="mt-3 mb-1 ml-2 font-medium">Интервьюер</p>
             <div className=" flex items-center mt-1">
               <div
                 id="slider-3"
@@ -283,7 +282,7 @@ function EditInterview({ interview }: EditInterviewProps) {
         <label className="flex-col mt-2 ml-2 w-full">
           <div className="flex items-center cursor-pointer">
             <span className="text-sm font-medium">
-              Do you prefer the interviewees&apos; responses to be anonymous?
+              Предпочитаете ли вы, чтобы ответы интервьюируемых были анонимными?
             </span>
             <Switch
               checked={isAnonymous}
@@ -297,13 +296,12 @@ function EditInterview({ interview }: EditInterviewProps) {
             style={{ fontSize: "0.7rem", lineHeight: "0.66rem" }}
             className="font-light text-xs italic w-full text-left block"
           >
-            Note: If not anonymous, the interviewee&apos;s email and name will
-            be collected.
+            Примечание: Если не анонимно, будут собираться email и имя интервьюируемого.
           </span>
         </label>
         <div className="flex flex-row justify-between w-[75%] gap-3 ml-2">
           <div className="flex flex-row justify-center items-center mt-5 ">
-            <h3 className="font-medium ">No. of Questions:</h3>
+            <h3 className="font-medium ">Количество вопросов:</h3>
             <input
               type="number"
               step="1"
@@ -326,7 +324,7 @@ function EditInterview({ interview }: EditInterviewProps) {
             />
           </div>
           <div className="flex flex-row items-center mt-5">
-            <h3 className="font-medium ">Duration (mins):</h3>
+            <h3 className="font-medium ">Продолжительность (мин):</h3>
             <input
               type="number"
               step="1"
@@ -349,7 +347,7 @@ function EditInterview({ interview }: EditInterviewProps) {
             />
           </div>
         </div>
-        <p className="mt-3 mb-1 ml-2 font-medium">Questions</p>
+        <p className="mt-3 mb-1 ml-2 font-medium">Вопросы</p>
         <ScrollArea className="flex ml-2 p-2 pr-4 mb-4 flex-col justify-center items-center w-[75%] max-h-[500px] bg-slate-100 rounded-md text-sm mt-3">
           {questions.map((question, index) => (
             <QuestionCard

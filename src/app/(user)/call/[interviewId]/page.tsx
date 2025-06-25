@@ -35,9 +35,9 @@ function PopupLoader() {
         rel="noopener noreferrer"
       >
         <div className="text-center text-md font-semibold mr-2">
-          Powered by{" "}
+          Работает на{" "}
           <span className="font-bold">
-            Folo<span className="text-indigo-600">Up</span>
+            Rise Folo<span className="text-indigo-600">Up</span>
           </span>
         </div>
         <ArrowUpRightSquareIcon className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-indigo-500" />
@@ -69,9 +69,9 @@ function PopUpMessage({ title, description, image }: PopupProps) {
         rel="noopener noreferrer"
       >
         <div className="text-center text-md font-semibold mr-2">
-          Powered by{" "}
+          Работает на{" "}
           <span className="font-bold">
-            Folo<span className="text-indigo-600">Up</span>
+            Rise Folo<span className="text-indigo-600">Up</span>
           </span>
         </div>
         <ArrowUpRightSquareIcon className="h-[1.5rem] w-[1.5rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0 text-indigo-500" />
@@ -117,8 +117,8 @@ function InterviewInterface({ params }: Props) {
         {!interview ? (
           interviewNotFound ? (
             <PopUpMessage
-              title="Invalid URL"
-              description="The interview link you're trying to access is invalid. Please check the URL and try again."
+              title="Неверная ссылка"
+              description="Ссылка на интервью, которую вы пытаетесь открыть, недействительна. Пожалуйста, проверьте URL и попробуйте снова."
               image="/invalid-url.png"
             />
           ) : (
@@ -126,8 +126,8 @@ function InterviewInterface({ params }: Props) {
           )
         ) : !isActive ? (
           <PopUpMessage
-            title="Interview Is Unavailable"
-            description="We are not currently accepting responses. Please contact the sender for more information."
+            title="Интервью недоступно"
+            description="В настоящее время мы не принимаем ответы. Пожалуйста, свяжитесь с отправителем для получения дополнительной информации."
             image="/closed.png"
           />
         ) : (
@@ -140,18 +140,17 @@ function InterviewInterface({ params }: Props) {
             {interview?.name}
           </p>
           <p className="text-center text-gray-600 my-5">
-            Please use a PC to respond to the interview. Apologies for any
-            inconvenience caused.{" "}
+            Пожалуйста, используйте компьютер для ответа на интервью. Приносим извинения за причиненные неудобства. {" "}
           </p>
         </div>
         <div className="text-center text-md font-semibold mr-2 my-5">
-          Powered by{" "}
+          Работает на{" "}
           <a
             className="font-bold underline"
             href="www.folo-up.co"
             target="_blank"
           >
-            Folo<span className="text-indigo-600">Up</span>
+            Rise Folo<span className="text-indigo-600">Up</span>
           </a>
         </div>
       </div>

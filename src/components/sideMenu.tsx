@@ -22,7 +22,7 @@ function SideMenu() {
             onClick={() => router.push("/dashboard")}
           >
             <PlayCircleIcon className="font-thin	 mr-2" />
-            <p className="font-medium ">Interviews</p>
+            <p className="font-medium ">Интервью</p>
           </div>
           <div
             className={`flex flex-row p-3 rounded-md hover:bg-slate-200 cursor-pointer ${
@@ -33,7 +33,7 @@ function SideMenu() {
             onClick={() => router.push("/dashboard/interviewers")}
           >
             <SpeechIcon className="font-thin mr-2" />
-            <p className="font-medium ">Interviewers</p>
+            <p className="font-medium ">Интервьюеры</p>
           </div>
         </div>
       </div>

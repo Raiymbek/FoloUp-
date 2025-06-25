@@ -81,7 +81,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
             className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Name
+            Имя
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
@@ -109,7 +109,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
                 side="top"
                 className="bg-gray-500 text-white font-normal"
               >
-                View Response
+                Просмотреть ответ
               </TooltipContent>
             </Tooltip>
           </TooltipProvider>
@@ -132,7 +132,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
             className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Overall Score
+            Общий балл
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
@@ -158,7 +158,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
             className={`w-full justify-start font-semibold text-[15px] mb-1 ${column.getIsSorted() ? "text-indigo-600" : "text-black"}`}
             onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
           >
-            Communication Score
+            Балл коммуникации
             <ArrowUpDown className="ml-2 h-4 w-4" />
           </Button>
         );
@@ -179,7 +179,7 @@ function DataTable({ data, interviewId }: DataTableProps) {
       accessorKey: "callSummary",
       header: () => (
         <div className="w-full justify-start font-semibold text-[15px] mb-1 text-black">
-          Summary
+          Резюме
         </div>
       ),
       cell: ({ row }) => {

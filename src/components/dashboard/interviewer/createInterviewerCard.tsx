@@ -81,7 +81,7 @@ const createInterviewerCard = () => {
       >
         <div className="text-center w-[35rem]">
           <CardTitle className="text-2xl text mt-0 mb-4 p-0 font-semibold ">
-            Create an interviewer yourself!
+            Создайте интервьюера самостоятельно!
           </CardTitle>
           <div className="mt-3 p-2 flex flex-row justify-center space-x-10 items-center">
             <div
@@ -104,26 +104,26 @@ const createInterviewerCard = () => {
                     strokeWidth={0.7}
                   />
                   <h4 className="text-xs text-center font-medium text-gray-400">
-                    Choose an Avatar
+                    Выберите аватар
                   </h4>
                 </div>
               )}
             </div>
             <div className="flex flex-col justify-center items-start ml-4">
               <div className="flex flex-row justify-center items-center">
-                <h3 className="text-lg font-medium">Name</h3>
+                <h3 className="text-lg font-medium">Имя</h3>
                 <input
                   type="text"
                   className="border-b-2 focus:outline-none border-gray-500 px-2 py-0.5 ml-3 w-[12.5rem]"
-                  placeholder="e.g. Empathetic Bob"
+                  placeholder="например: Эмпатичный Боб"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <h3 className="text-lg mt-3 font-medium">Interviewer Settings</h3>
+              <h3 className="text-lg mt-3 font-medium">Настройки интервьюера</h3>
               <div className="ml-5 mt-2 flex flex-col justify-start items-start">
                 <div className="flex flex-row justify-between items-center mb-2">
-                  <h4 className="w-20 text-left">Empathy</h4>
+                  <h4 className="w-20 text-left">Эмпатия</h4>
                   <div className="w-40 space-x-3 ml-3 flex justify-between items-center">
                     <Slider
                       value={[empathy]}
@@ -159,7 +159,7 @@ const createInterviewerCard = () => {
                   </div>
                 </div>
                 <div className="flex flex-row justify-between items-center mb-2">
-                  <h4 className="w-20 text-left">Speed</h4>
+                  <h4 className="w-20 text-left">Скорость</h4>
                   <div className="w-40 space-x-3 ml-3 flex justify-between items-center">
                     <Slider
                       value={[speed]}
@@ -182,7 +182,7 @@ const createInterviewerCard = () => {
                 onSave();
               }}
             >
-              Save
+              Сохранить
             </Button>
           </div>
         </div>
@@ -196,7 +196,7 @@ const createInterviewerCard = () => {
       >
         <div className="text-left w-[20rem]">
           <CardTitle className="text-xl text mt-0 p-0 font-semibold ">
-            Select an Avatar
+            Выберите аватар
           </CardTitle>
           <ScrollArea className="mt-3 h-96">
             <div className="flex flex-row flex-wrap justify-center items-center">

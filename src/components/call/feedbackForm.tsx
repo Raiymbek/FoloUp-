@@ -33,7 +33,7 @@ export function FeedbackForm({ onSubmit, email }: FeedbackFormProps) {
   return (
     <div className="p-4">
       <h3 className="text-lg font-semibold mb-4">
-        Are you satisfied with the platform?
+        Вы довольны платформой?
       </h3>
       <div className="flex justify-center space-x-4 mb-4">
         {Object.values(SatisfactionLevel).map((emoji) => (
@@ -48,7 +48,7 @@ export function FeedbackForm({ onSubmit, email }: FeedbackFormProps) {
       </div>
       <Textarea
         value={feedback}
-        placeholder="Add your feedback here"
+        placeholder="Добавьте ваш отзыв здесь"
         className="mb-4"
         onChange={(e) => setFeedback(e.target.value)}
       />
@@ -57,7 +57,7 @@ export function FeedbackForm({ onSubmit, email }: FeedbackFormProps) {
         className="w-full bg-indigo-600 text-white"
         onClick={handleSubmit}
       >
-        Submit Feedback
+        Отправить отзыв
       </Button>
     </div>
   );

@@ -20,16 +20,17 @@ export async function GET(res: NextRequest) {
           type: "end_call",
           name: "end_call_1",
           description:
-            "End the call if the user uses goodbye phrases such as 'bye,' 'goodbye,' or 'have a nice day.' ",
+            "Завершить звонок, если пользователь использует фразы прощания, такие как 'до свидания', 'пока' или 'хорошего дня.'",
         },
       ],
     });
 
-    // Create Lisa
+    // Создаем Lisa с русскоязычными настройками
     const newFirstAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
-      voice_id: "11labs-Chloe",
+      voice_id: "11labs-Anna", // Русскоязычный голос от ElevenLabs
       agent_name: "Lisa",
+      // Retell AI автоматически определит русский язык для STT
     });
 
     const newInterviewer = await InterviewerService.createInterviewer({
@@ -37,11 +38,12 @@ export async function GET(res: NextRequest) {
       ...INTERVIEWERS.LISA,
     });
 
-    // Create Bob
+    // Создаем Bob с русскоязычными настройками
     const newSecondAgent = await retellClient.agent.create({
       response_engine: { llm_id: newModel.llm_id, type: "retell-llm" },
-      voice_id: "11labs-Brian",
+      voice_id: "11labs-Dmitri", // Русскоязычный голос от ElevenLabs
       agent_name: "Bob",
+      // Retell AI автоматически определит русский язык для STT
     });
 
     const newSecondInterviewer = await InterviewerService.createInterviewer({

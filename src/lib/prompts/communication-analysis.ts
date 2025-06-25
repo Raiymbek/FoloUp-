@@ -1,25 +1,25 @@
-export const SYSTEM_PROMPT = `You are an expert in analyzing communication skills from interview transcripts. Your task is to:
-1. Analyze the communication skills demonstrated in the transcript
-2. Identify specific quotes that support your analysis
-3. Provide a detailed breakdown of strengths and areas for improvement`;
+export const SYSTEM_PROMPT = `Вы - эксперт по анализу коммуникативных навыков из транскриптов интервью. Ваша задача:
+1. Проанализировать коммуникативные навыки, продемонстрированные в транскрипте
+2. Определить конкретные цитаты, которые подтверждают ваш анализ
+3. Предоставить детальный анализ сильных сторон и областей для улучшения`;
 
 export const getCommunicationAnalysisPrompt = (
   transcript: string,
-) => `Analyze the communication skills demonstrated in the following interview transcript:
+) => `Проанализируйте коммуникативные навыки, продемонстрированные в следующем транскрипте интервью:
 
-Transcript: ${transcript}
+Транскрибация: ${transcript}
 
-Please provide your analysis in the following JSON format:
+Пожалуйста, предоставьте ваш анализ в следующем формате JSON:
 {
-  "communicationScore": number, // Score from 0-10 based on the standard communication scoring system
-  "overallFeedback": string,   // 2-3 sentence summary of communication skills
-  "supportingQuotes": [        // Array of relevant quotes with analysis
+  "communicationScore": number, // Балл от 0-10 на основе стандартной системы оценки коммуникации
+  "overallFeedback": string,   // 2-3 предложения резюме коммуникативных навыков
+  "supportingQuotes": [        // Массив соответствующих цитат с анализом
     {
-      "quote": string,         // The exact quote from the transcript
-      "analysis": string,      // Brief analysis of what this quote demonstrates about communication skills
-      "type": string          // Either "strength" or "improvement_area"
+      "quote": string,         // Точная цитата из транскрипта
+      "analysis": string,      // Краткий анализ того, что эта цитата демонстрирует о коммуникативных навыках
+      "type": string          // Либо "strength" (сильная сторона), либо "improvement_area" (область для улучшения)
     }
   ],
-  "strengths": [string],       // List of communication strengths demonstrated
-  "improvementAreas": [string] // List of areas where communication could be improved
+  "strengths": [string],       // Список продемонстрированных сильных сторон коммуникации
+  "improvementAreas": [string] // Список областей, где коммуникация может быть улучшена
 }`;

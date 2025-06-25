@@ -81,7 +81,7 @@ function InterviewCard({ name, interviewerId, id, url, readableSlug }: Props) {
         () => {
           setCopied(true);
           toast.success(
-            "The link to your interview has been copied to your clipboard.",
+            "Ссылка на ваше интервью скопирована в буфер обмена.",
             {
               position: "bottom-right",
               duration: 3000,
@@ -137,7 +137,7 @@ function InterviewCard({ name, interviewerId, id, url, readableSlug }: Props) {
               />
             </div>
             <div className="text-black text-sm font-semibold mt-2 mr-2 whitespace-nowrap">
-              Responses:{" "}
+              Ответы:{" "}
               <span className="font-normal">
                 {responseCount?.toString() || 0}
               </span>

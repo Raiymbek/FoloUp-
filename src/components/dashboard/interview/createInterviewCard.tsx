@@ -22,7 +22,7 @@ function CreateInterviewCard() {
             <Plus size={90} strokeWidth={0.5} className="text-gray-700" />
           </div>
           <CardTitle className="p-0 text-md text-center">
-            Create an Interview
+            Создать интервью
           </CardTitle>
         </CardContent>
       </Card>

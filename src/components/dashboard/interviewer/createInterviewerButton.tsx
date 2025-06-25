@@ -34,7 +34,7 @@ function CreateInterviewerButton() {
             </div>
           )}
           <p className="my-3 mx-auto text-xs text-wrap w-fit text-center">
-            Create two Default Interviewers
+            Создать двух интервьюеров по умолчанию
           </p>
         </CardContent>
       </Card>

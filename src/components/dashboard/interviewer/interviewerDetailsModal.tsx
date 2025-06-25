@@ -35,12 +35,12 @@ function InterviewerDetailsModal({ interviewer }: Props) {
           </div>
         </div>
         <h3 className="text-mg m-0 p-0 mt-5 ml-0 font-medium">
-          Interviewer Settings:
+          Настройки интервьюера:
         </h3>
         <div className="flex flex-row space-x-14 justify-center items-start">
           <div className=" mt-2 flex flex-col justify-start items-start">
             <div className="flex flex-row justify-between items-center mb-2">
-              <h4 className="w-20 text-left">Empathy</h4>
+              <h4 className="w-20 text-left">Эмпатия</h4>
               <div className="w-40 space-x-3 ml-3 flex justify-between items-center">
                 <Slider
                   value={[(interviewer?.empathy || 10) / 10]}
@@ -53,7 +53,7 @@ function InterviewerDetailsModal({ interviewer }: Props) {
               </div>
             </div>
             <div className="flex flex-row justify-between items-center ">
-              <h4 className="w-20 text-left">Rapport</h4>
+              <h4 className="w-20 text-left">Раппорт</h4>
               <div className="w-40 space-x-3 ml-3 flex justify-between items-center">
                 <Slider
                   value={[(interviewer?.rapport || 10) / 10]}
@@ -68,7 +68,7 @@ function InterviewerDetailsModal({ interviewer }: Props) {
           </div>
           <div className=" mt-2 flex flex-col justify-start items-start">
             <div className="flex flex-row justify-between items-center mb-2">
-              <h4 className="w-20 text-left">Exploration</h4>
+              <h4 className="w-20 text-left">Исследование</h4>
               <div className="w-40 space-x-3 ml-3 flex justify-between items-center">
                 <Slider
                   value={[(interviewer?.exploration || 10) / 10]}
@@ -81,7 +81,7 @@ function InterviewerDetailsModal({ interviewer }: Props) {
               </div>
             </div>
             <div className="flex flex-row justify-between items-center ">
-              <h4 className="w-20 text-left">Speed</h4>
+              <h4 className="w-20 text-left">Скорость</h4>
               <div className="w-40 space-x-3 ml-3 flex justify-between items-center">
                 <Slider
                   value={[(interviewer?.speed || 10) / 10]}
