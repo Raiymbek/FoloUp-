@@ -81,6 +81,10 @@ function Call({ interview }: InterviewProps) {
     useState<string>("1");
   const [time, setTime] = useState(0);
   const [currentTimeDuration, setCurrentTimeDuration] = useState<string>("0");
+  const [phone, setPhone] = useState<string>("");
+  const [phoneError, setPhoneError] = useState<string>("");
+  const phoneInputRef = useRef<HTMLInputElement>(null);
+  const [isPhoneFocused, setIsPhoneFocused] = useState(false);
 
   const lastUserResponseRef = useRef<HTMLDivElement | null>(null);
 
@@ -195,6 +199,38 @@ function Call({ interview }: InterviewProps) {
     }
   };
 
+  const validatePhone = (value: string) => {
+    const cleaned = value.replace(/[^0-9+]/g, "");
+    if (!/^\+7\d{10}$/.test(cleaned)) {
+      return "Проверьте номер: должно быть 11 цифр, включая +7";
+    }
+    return "";
+  };
+
+  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/[^0-9+]/g, "");
+    setPhone(value);
+    setPhoneError("");
+  };
+
+  const handlePhoneBlur = () => {
+    setIsPhoneFocused(false);
+  };
+
+  const handlePhoneFocus = () => {
+    setIsPhoneFocused(true);
+  };
+
+  const handleStartClick = () => {
+    const err = validatePhone(phone);
+    setPhoneError(err);
+    if (err && phoneInputRef.current) {
+      phoneInputRef.current.focus();
+    } else {
+      startConversation();
+    }
+  };
+
   const startConversation = async () => {
     const data = {
       mins: interview?.time_duration,
@@ -235,6 +271,7 @@ function Call({ interview }: InterviewProps) {
           call_id: registerCallResponse.data.registerCallResponse.call_id,
           email: email,
           name: name,
+          phone: phone,
         });
       } else {
         console.log("Failed to register call");
@@ -345,18 +382,41 @@ function Call({ interview }: InterviewProps) {
                     <div className="flex flex-col gap-2 justify-center">
                       <div className="flex justify-center">
                         <input
-                          value={email}
-                          className="h-fit mx-auto py-2 border-2 rounded-md w-[75%] self-center px-2 border-gray-400 text-sm font-normal"
-                          placeholder="Введите ваш email адрес"
-                          onChange={(e) => setEmail(e.target.value)}
+                          value={name}
+                          className="h-fit mx-auto py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 border-gray-300 text-sm font-normal mb-2 focus:border-blue-500 outline-none transition-colors"
+                          placeholder="Введите ваше имя"
+                          onChange={(e) => setName(e.target.value)}
+                          autoFocus
+                          style={{minWidth: 0}}
                         />
+                      </div>
+                      <div className="flex flex-col items-center w-full">
+                        <input
+                          ref={phoneInputRef}
+                          value={phone}
+                          className={`h-fit py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 text-sm font-normal mb-1 focus:outline-none transition-colors ${phoneError ? 'border-red-500' : isPhoneFocused ? 'border-blue-500' : 'border-gray-300'}`}
+                          placeholder="Введите ваш номер телефона"
+                          onChange={handlePhoneChange}
+                          onFocus={handlePhoneFocus}
+                          onBlur={handlePhoneBlur}
+                          maxLength={16}
+                          inputMode="tel"
+                          style={{minWidth: 0}}
+                        />
+                        {phoneError && (
+                          <div className="w-[90%] md:w-[75%] text-xs text-red-600 mt-1 mb-1 text-left bg-white md:bg-transparent rounded-sm px-1" style={{zIndex: 100}}>
+                            {phoneError}
+                          </div>
+                        )}
                       </div>
                       <div className="flex justify-center">
                         <input
-                          value={name}
-                          className="h-fit mb-4 mx-auto py-2 border-2 rounded-md w-[75%] self-center px-2 border-gray-400 text-sm font-normal"
-                          placeholder="Введите ваше имя"
-                          onChange={(e) => setName(e.target.value)}
+                          value={email}
+                          className="h-fit mx-auto py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 border-gray-300 text-sm font-normal mb-2 focus:border-blue-500 outline-none transition-colors"
+                          placeholder="Введите ваш email адрес"
+                          onChange={(e) => setEmail(e.target.value)}
+                          type="email"
+                          style={{minWidth: 0}}
                         />
                       </div>
                     </div>
@@ -370,12 +430,10 @@ function Call({ interview }: InterviewProps) {
                       color: isLightColor(interview.theme_color ?? "#4F46E5")
                         ? "black"
                         : "white",
+                      opacity: phoneError ? 0.5 : 1,
+                      pointerEvents: 'auto',
                     }}
-                    disabled={
-                      Loading ||
-                      (!interview?.is_anonymous && (!isValidEmail || !name))
-                    }
-                    onClick={startConversation}
+                    onClick={handleStartClick}
                   >
                     {!Loading ? "Начать интервью" : <MiniLoader />}
                   </Button>

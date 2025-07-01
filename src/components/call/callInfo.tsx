@@ -51,6 +51,7 @@ function CallInfo({
   const [call, setCall] = useState<CallData>();
   const [analytics, setAnalytics] = useState<Analytics | null>(null);
   const [email, setEmail] = useState<string>("");
+  const [phone, setPhone] = useState<string>("");
   const [name, setName] = useState<string>("");
   const [isClicked, setIsClicked] = useState(false);
   const router = useRouter();
@@ -66,7 +67,7 @@ function CallInfo({
       setCall(undefined);
       setEmail("");
       setName("");
-
+      setPhone("");
       try {
         const response = await axios.post("/api/get-call", { id: call_id });
         setCall(response.data.callResponse);
@@ -89,6 +90,7 @@ function CallInfo({
         const response = await ResponseService.getResponseByCallId(call_id);
         setEmail(response.email);
         setName(response.name);
+        setPhone(response.phone);
         setCandidateStatus(response.candidate_status);
         setInterviewId(response.interview_id);
         setTabSwitchCount(response.tab_switch_count);
@@ -196,6 +198,7 @@ function CallInfo({
                         <p className="text-sm font-semibold px-2">{name}</p>
                       )}
                       {email && <p className="text-sm px-2">{email}</p>}
+                      {phone && <p className="text-sm px-2">{phone}</p>}
                     </div>
                   </div>
                   <div className="flex flex-row mr-2 items-center gap-3">
