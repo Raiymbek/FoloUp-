@@ -383,11 +383,11 @@ function Call({ interview }: InterviewProps) {
                     <div className="flex flex-col gap-2 justify-center">
                       <div className="flex justify-center">
                         <input
-                          autoFocus
                           className="h-fit mx-auto py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 border-gray-300 text-sm font-normal mb-2 focus:border-blue-500 outline-none transition-colors"
                           placeholder="Введите ваше имя"
                           style={{minWidth: 0}}
                           value={name}
+                          autoFocus
                           onChange={(e) => setName(e.target.value)}
                         />
                       </div>
