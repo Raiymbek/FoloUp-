@@ -204,6 +204,7 @@ function Call({ interview }: InterviewProps) {
     if (!/^\+7\d{10}$/.test(cleaned)) {
       return "Проверьте номер: должно быть 11 цифр, включая +7";
     }
+
     return "";
   };
 
@@ -382,26 +383,26 @@ function Call({ interview }: InterviewProps) {
                     <div className="flex flex-col gap-2 justify-center">
                       <div className="flex justify-center">
                         <input
-                          value={name}
+                          autoFocus
                           className="h-fit mx-auto py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 border-gray-300 text-sm font-normal mb-2 focus:border-blue-500 outline-none transition-colors"
                           placeholder="Введите ваше имя"
-                          onChange={(e) => setName(e.target.value)}
-                          autoFocus
                           style={{minWidth: 0}}
+                          value={name}
+                          onChange={(e) => setName(e.target.value)}
                         />
                       </div>
                       <div className="flex flex-col items-center w-full">
                         <input
-                          ref={phoneInputRef}
-                          value={phone}
                           className={`h-fit py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 text-sm font-normal mb-1 focus:outline-none transition-colors ${phoneError ? 'border-red-500' : isPhoneFocused ? 'border-blue-500' : 'border-gray-300'}`}
+                          inputMode="tel"
+                          maxLength={16}
                           placeholder="Введите ваш номер телефона"
+                          ref={phoneInputRef}
+                          style={{minWidth: 0}}
+                          value={phone}
+                          onBlur={handlePhoneBlur}
                           onChange={handlePhoneChange}
                           onFocus={handlePhoneFocus}
-                          onBlur={handlePhoneBlur}
-                          maxLength={16}
-                          inputMode="tel"
-                          style={{minWidth: 0}}
                         />
                         {phoneError && (
                           <div className="w-[90%] md:w-[75%] text-xs text-red-600 mt-1 mb-1 text-left bg-white md:bg-transparent rounded-sm px-1" style={{zIndex: 100}}>
@@ -411,12 +412,12 @@ function Call({ interview }: InterviewProps) {
                       </div>
                       <div className="flex justify-center">
                         <input
-                          value={email}
                           className="h-fit mx-auto py-2 border-2 rounded-md w-[90%] md:w-[75%] self-center px-2 border-gray-300 text-sm font-normal mb-2 focus:border-blue-500 outline-none transition-colors"
                           placeholder="Введите ваш email адрес"
-                          onChange={(e) => setEmail(e.target.value)}
-                          type="email"
                           style={{minWidth: 0}}
+                          type="email"
+                          value={email}
+                          onChange={(e) => setEmail(e.target.value)}
                         />
                       </div>
                     </div>
